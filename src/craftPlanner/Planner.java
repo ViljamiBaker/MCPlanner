@@ -45,7 +45,7 @@ public class Planner {
     }
     public static void main(String[] args) {
         balls();
-        Recipe rec = Recipe.CreateRecipe("circuit board", 32);
+        RecipePlan rec = RecipePlan.CreateRecipe("circuit board", 32);
         System.out.println(rec);
         System.out.println(Arrays.toString(rec.getBaseItemCost()));
     }
