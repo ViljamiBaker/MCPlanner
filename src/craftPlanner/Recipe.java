@@ -43,6 +43,17 @@ public class Recipe {
         return realInput;
     }
 
+    public static Recipe getRecipe(Item item){
+        for (Recipe recipe : allRecipes) {
+            for (ItemCost ic : recipe.products) {
+                if(ic.craftingItem().equals(item)){
+                    return recipe;
+                }
+            }
+        }
+        throw new RuntimeException("No recipes for " + item.name + " broteenshake");
+    }
+
     public static Recipe createRecipe(String input){
         String[] reqandprod = input.split("[|]");
 
@@ -71,6 +82,7 @@ public class Recipe {
         this.requirements = requirements; 
         this.products = products; 
         this.endItem = requirements.length==0;
+        allRecipes.add(this);
     }
     
     private static String CreateRecipeString(ItemCost[] requirements) {
@@ -86,6 +98,15 @@ public class Recipe {
                 return b.append(']').toString();
             b.append(", ");
         }
+    }
+
+    public double getCraftCountOfItem(Item item){
+        for (ItemCost ic : products) {
+            if(ic.craftingItem().equals(item)){
+                return ic.count();
+            }
+        }
+        return 0;
     }
 
     @Override

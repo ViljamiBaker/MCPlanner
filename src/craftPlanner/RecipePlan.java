@@ -5,37 +5,30 @@ import java.util.ArrayList;
 // the thing that contains all of the steps
 public class RecipePlan {
 
-    private record ItemCost(Item craftingItem, double count) {
-        @Override
-        public boolean equals(Object o){
-            if(!(o instanceof Item)) return false;
-            ItemCost ic = (ItemCost) o;
-            return ic.craftingItem.equals(this.craftingItem);
-        }
-        @Override
-        public String toString(){
-            return count + " " + craftingItem.toString();
-        }
-    }
-
-    public Item craftingItem;
+    public Recipe craft;
     public double count;
     public RecipePlan[] previousSteps;
 
     public static final String indentString = "   ";
 
-    public static RecipePlan CreateRecipe(String name, double count){
-        return new RecipePlan(Item.doesItemExsist(name), count);
+    public static RecipePlan createRecipe(String item, double count){
+        return RecipePlan.createRecipe(Item.doesItemExsist(item), count);
     }
 
-    private RecipePlan(Item craftingItem, double count){
-        this.craftingItem = craftingItem;
-        this.count = count;
-        previousSteps = new RecipePlan[craftingItem.recipe.length];
-        for (int i = 0; i < craftingItem.recipe.length; i++) {
-            previousSteps[i] = new RecipePlan(craftingItem.recipe[i], count * craftingItem.recipeItemReq[i]);
-        }
+    public static RecipePlan createRecipe(Item item, double count){
+        Recipe rec = Recipe.getRecipe(item);
+        return new RecipePlan(rec, rec.getCraftCountOfItem(item) * count);
     }
+
+    private RecipePlan(Recipe craft, double count){
+        this.craft = craft;
+        this.count = count;
+        previousSteps = new RecipePlan[craft.requirements.length];
+        for (int i = 0; i<craft.requirements.length; i++) {
+            previousSteps[i] = RecipePlan.createRecipe(craft.requirements[i].craftingItem(),craft.requirements[i].count()*count);
+        }
+    }    
+    
     @Override
     public String toString(){
         return toString(0);
@@ -49,9 +42,9 @@ public class RecipePlan {
         }
         String step1 = toStringStep1(depth);
         if(step1 == null){
-            return indent + count + " " + craftingItem.name + (craftingItem.endItem?" ------":"")+ "\n";
+            return indent + count + " " + craft.toString() + (craft.endItem?" ------":"")+ "\n";
         }
-        return indent + "Craft " + count + " " + craftingItem.name + " With\n" + step1;
+        return indent + "Craft " + count + " " + craft.toString() + " With\n" + step1;
     }
 
     private String toStringStep1(int depth){
@@ -65,20 +58,20 @@ public class RecipePlan {
         return string;
     }
 
-    public ItemCost[] getBaseItemCost(){
+    public ItemCost[] getBaseCost(){
         if (previousSteps.length == 0){
-            return new ItemCost[] {new ItemCost(craftingItem, count)};
+            return craft.products;
         }
         ArrayList<ItemCost> itemCosts = new ArrayList<>();
         for (RecipePlan rec : previousSteps) {
-            for (ItemCost itemCost : rec.getBaseItemCost()) {
+            for (ItemCost itemCost : rec.getBaseCost()) {
                 int dupe = itemCosts.indexOf(itemCost);
                 if(dupe==-1){
                     itemCosts.add(itemCost);
                 }else{
                     double lastCount = itemCosts.get(dupe).count();
                     itemCosts.remove(dupe);
-                    itemCosts.add(new ItemCost(itemCost.craftingItem, lastCount+itemCost.count));
+                    itemCosts.add(new ItemCost(itemCost.craftingItem(), lastCount+itemCost.count()*rec.count));
                 }
             }
         }
