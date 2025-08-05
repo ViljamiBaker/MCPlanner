@@ -1,0 +1,95 @@
+SetIndent:    
+NumberOfLinebreaks:1
+
+Create Item: circuit board
+Create Item: resistor
+Create Item: steel plate
+Create Item: resin printed circuit board
+Create Item: vacuum tube
+Create Item: red alloy wire coated
+Create Item: paper
+Create Item: sugar cane
+Create Item: charcoal dust
+Create Item: charcoal
+Create Item: sticky resin
+Create Item: fine copper wire
+Create Item: copper foil
+Create Item: copper plate
+Create Item: copper ingot
+Create Item: siltake spore
+Create Item: steel ingot
+Create Item: iron ingot
+Create Item: copper wire
+Create Item: resin circuit board
+Create Item: wood plank
+Create Item: wood slab
+Create Item: wood
+Create Item: wood log
+Create Item: steel bolt
+Create Item: glass tube
+Create Item: steel rod
+Create Item: glass pane
+Create Item: glass
+Create Item: glass dust
+Create Item: quarts sand
+Create Item: flint dust
+Create Item: sand
+Create Item: flint
+Create Item: red alloy wire
+Create Item: rubber sheet
+Create Item: red alloy plate
+Create Item: red alloy ingot
+Create Item: redstone
+Create Item: cured rubber
+Create Item: rubber
+Create Item: sulfur
+
+Create Recipe: 1 circuit board| 2 resistor, 2 steel plate, 1 resin printed circuit board, 2 vacuum tube, 3 red alloy wire coated
+
+Create Recipe: 1 resistor| 2 paper, 1 charcoal dust, 2 sticky resin, 2 fine copper wire
+Create Recipe: 3 paper| 3 sugar cane
+Create Recipe: 1 sugar cane
+Create Recipe: 1 charcoal dust| 1 charcoal
+Create Recipe: 1 charcoal
+Create Recipe: 1 sticky resin| 1 siltake spore
+Create Recipe: 1 siltake spore
+Create Recipe: 1 fine copper wire| 1 copper foil
+Create Recipe: 2 copper foil| 1 copper plate
+Create Recipe: 1 copper plate| 2 copper ingot
+Create Recipe: 1 copper ingot
+
+Create Recipe: 1 steel plate| 2 steel ingot
+Create Recipe: 1 steel ingot| 1 charcoal, 1 iron ingot
+Create Recipe: 1 iron ingot
+
+Create Recipe: 1 resin printed circuit board| 8 copper wire, 1 resin circuit board
+Create Recipe: 1 copper wire| 1 copper plate
+Create Recipe: 1 resin circuit board| 1 wood plank, 2 sticky resin
+Create Recipe: 1 wood plank| 3 wood slab
+Create Recipe: 1 wood slab| 3 wood
+Create Recipe: 4 wood| 1 wood log
+Create Recipe: 1 wood log
+
+Create Recipe: 1 vacuum tube| 3 copper wire, 2 steel bolt, 1 glass tube
+Create Recipe: 2 steel bolt| 1 steel rod
+Create Recipe: 1 steel rod| 1 steel ingot
+Create Recipe: 2 glass tube| 6 glass pane
+Create Recipe: 2 glass pane| 1 glass
+Create Recipe: 1 glass| 1 glass dust
+Create Recipe: 8 glass dust| 8 quarts sand, 1 flint dust
+Create Recipe: 1 quarts sand| 1 sand
+Create Recipe: 1 sand
+Create Recipe: 1 flint dust| 1 flint
+Create Recipe: 1 flint
+
+Create Recipe: 1 red alloy wire coated| 1 red alloy wire, 1 rubber sheet
+Create Recipe: 1 red alloy wire| 1 red alloy plate
+Create Recipe: 1 red alloy plate| 2 red alloy ingot
+Create Recipe: 1 red alloy ingot| 4 redstone, 1 copper ingot
+Create Recipe: 1 redstone
+Create Recipe: 1 rubber sheet| 1 cured rubber
+Create Recipe: 3 cured rubber| 3 rubber, 1 sulfur
+Create Recipe: 1 rubber
+Create Recipe: 1 sulfur
+
+Calculate Item: circuit board, 32

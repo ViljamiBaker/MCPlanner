@@ -36,7 +36,7 @@ public class Recipe {
             }
             Item item = Item.doesItemExsist(nameOfPart);
             if(item==null){
-                throw new RuntimeException("Item \"" + nameOfPart + "\" Does not exist (Yet?).");
+                throw new RuntimeException("ERROR: Item \"" + nameOfPart + "\" Does not exist yet and was used in recipe.");
             }
             realInput[i] = new ItemCost(item, itemreq);
         }
@@ -51,7 +51,7 @@ public class Recipe {
                 }
             }
         }
-        throw new RuntimeException("No recipes for " + item.name + " broteenshake");
+        return null;
     }
 
     public static Recipe createRecipe(String input){
@@ -123,9 +123,9 @@ public class Recipe {
         String recString = Recipe.CreateRecipeString(requirements);
         String prodString = Recipe.CreateRecipeString(products);
         if(recString == null){
-            return "Create: " + prodString;
+            return prodString;
         }
-        return "Create: " + prodString + " With: " + recString;
+        return prodString + " With: " + recString;
     }
 
     public static void main(String[] args) {
