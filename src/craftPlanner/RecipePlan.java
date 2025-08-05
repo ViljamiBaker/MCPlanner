@@ -18,7 +18,7 @@ public class RecipePlan {
         if(rec == null){
             throw new RuntimeException("ERROR: No recipe for item: " + item);
         }
-        return new RecipePlan(rec, count/rec.getCraftCountOfItem(item));
+        return new RecipePlan(rec, (IOHandler.requireRoundCrafts?Math.ceil(count/rec.getCraftCountOfItem(item)):count/rec.getCraftCountOfItem(item)));
     }
 
     private RecipePlan(Recipe craft, double count){

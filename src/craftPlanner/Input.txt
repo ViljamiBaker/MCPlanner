@@ -1,5 +1,6 @@
-SetIndent:    
+SetIndent:asdasdasdasd
 NumberOfLinebreaks:1
+RequireRoundCrafts:1
 
 Create Item: circuit board
 Create Item: resistor

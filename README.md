@@ -20,5 +20,16 @@ run IOHandler
 
 look in output.txt
 
-put SetIndent:whatever to set the indent or
-NumberOfLinebreaks:number to set linebreaks between lines
+other things to put in Input.txt
+
+SetIndent:whatever
+sets the indent to use in Output
+Default: "    "
+
+NumberOfLinebreaks:number
+set the number of linebreak between lines
+Default: 1
+
+RequireRoundCrafts:1 or 0
+whether to round crafts up or not (e.g 0.3->1)
+Default: 0

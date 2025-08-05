@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class IOHandler {
     public static String indent = "   ";
     public static String linebreak = "\n";
+    public static boolean requireRoundCrafts = false;
     public static void main(String[] args) {
         try {
             File input = new File(System.getProperty("user.dir") + "/src/craftPlanner/Input.txt");
@@ -51,6 +52,10 @@ public class IOHandler {
                         for (int i = 0; i < count; i++) {
                             linebreak+="\n";
                         }
+                        break;
+                    case "RequireRoundCrafts":
+                        int enabled = Integer.valueOf(lineSplit[1].trim());
+                        requireRoundCrafts = (enabled==1);
                         break;
                 }
             }
