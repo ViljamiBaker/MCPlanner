@@ -28,7 +28,7 @@ DebugOutput.txt contains any errors or auto created things
 
 sets the indent to use in Output
 
-Default: "    "
+Default: "⠀⠀⠀⠀"
 
 ### NumberOfLinebreaks:number
 
