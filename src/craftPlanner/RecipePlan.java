@@ -16,7 +16,13 @@ public class RecipePlan {
     public static RecipePlan createRecipe(Item item, double count){
         Recipe rec = Recipe.getRecipe(item);
         if(rec == null){
-            throw new RuntimeException("ERROR: No recipe for item: " + item);
+            
+            if(IOHandler.automaticallyAddItems){
+                rec = Recipe.createRecipe(new ItemCost[0], new ItemCost[] {new ItemCost(item,1)});
+                IOHandler.addToDebug("Recipe for item \"" + item.name + "\" automatically created.");
+            }else{
+                throw new RuntimeException("ERROR: No recipe for item: " + item);
+            }
         }
         return new RecipePlan(rec, (IOHandler.requireRoundCrafts?Math.ceil(count/rec.getCraftCountOfItem(item)):count/rec.getCraftCountOfItem(item)));
     }

@@ -36,7 +36,12 @@ public class Recipe {
             }
             Item item = Item.doesItemExsist(nameOfPart);
             if(item==null){
-                throw new RuntimeException("ERROR: Item \"" + nameOfPart + "\" Does not exist yet and was used in recipe.");
+                if(IOHandler.automaticallyAddItems){
+                    item = Item.createItem(nameOfPart);
+                    IOHandler.addToDebug("Item \"" + nameOfPart + "\" automatically created.");
+                }else{
+                    throw new RuntimeException("ERROR: Item \"" + nameOfPart + "\" Does not exist yet and was used in recipe.");
+                }
             }
             realInput[i] = new ItemCost(item, itemreq);
         }

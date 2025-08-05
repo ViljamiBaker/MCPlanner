@@ -1,6 +1,8 @@
-SetIndent:asdasdasdasd
+SetIndent:    
 NumberOfLinebreaks:1
 RequireRoundCrafts:1
+AutomaticallyAddItems:1
+AutomaticallyAddRecipes:0
 
 Create Item: circuit board
 Create Item: resistor
@@ -94,3 +96,4 @@ Create Recipe: 1 rubber
 Create Recipe: 1 sulfur
 
 Calculate Item: circuit board, 32
+Calculate Item: rubber sheet, 32
