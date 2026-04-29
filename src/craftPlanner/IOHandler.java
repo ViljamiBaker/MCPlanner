@@ -11,6 +11,7 @@ public class IOHandler {
     public static boolean requireRoundCrafts = false;
     public static boolean automaticallyAddItems = true;
     public static boolean automaticallyAddRecipe = false;
+    public static boolean useTime = false;
     private static String debugOut = "";
 
     public static void addToDebug(String in){
@@ -26,6 +27,10 @@ public class IOHandler {
             Scanner sc = new Scanner(input);
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
+                if(line.length()==0||line.charAt(0)=='#'){
+                    lineIndex++;
+                    continue;
+                }
                 String[] lineSplit = line.split("[:]");
                 switch (lineSplit[0]) {
                     case "Create Recipe":
@@ -78,6 +83,10 @@ public class IOHandler {
                     case "AutomaticallyAddRecipes":
                         enabled = Integer.valueOf(lineSplit[1].trim());
                         automaticallyAddRecipe = (enabled==1);
+                        break;
+                    case "UseTime":
+                        enabled = Integer.valueOf(lineSplit[1].trim());
+                        useTime = (enabled==1);
                         break;
                 }
                 lineIndex++;

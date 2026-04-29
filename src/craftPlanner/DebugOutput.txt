@@ -1,2 +1,16 @@
-Calculate Item failed, too few or too many commas? Line 97
-Calculate Item failed, too few or too many commas? Line 98
+Item "RCBlock" automatically created.
+Item "Steel Rod" automatically created.
+Item "Wet Concrete" automatically created.
+Item "Steel Ingot" automatically created.
+Item "Coal" automatically created.
+Item "Iron Mix" automatically created.
+Item "Iron Powder" automatically created.
+Item "Raw Iron" automatically created.
+Item "Cement" automatically created.
+Item "Aggrigate" automatically created.
+Item "Water" automatically created.
+Item "Rawmix" automatically created.
+Item "Limestone" automatically created.
+Item "Clay" automatically created.
+Item "Gravel" automatically created.
+Item "Soil" automatically created.

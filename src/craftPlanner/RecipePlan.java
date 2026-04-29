@@ -18,13 +18,17 @@ public class RecipePlan {
         if(rec == null){
             
             if(IOHandler.automaticallyAddItems){
-                rec = Recipe.createRecipe(new ItemCost[0], new ItemCost[] {new ItemCost(item,1)});
+                rec = Recipe.createRecipe(new ItemCost[0], new ItemCost[] {new ItemCost(item,1)}, IOHandler.useTime?1:-1.0);
                 IOHandler.addToDebug("Recipe for item \"" + item.name + "\" automatically created.");
             }else{
                 throw new RuntimeException("ERROR: No recipe for item: " + item);
             }
         }
-        return new RecipePlan(rec, (IOHandler.requireRoundCrafts?Math.ceil(count/rec.getCraftCountOfItem(item)):count/rec.getCraftCountOfItem(item)));
+        double craftCount = count/rec.getCraftCountOfItem(item);
+        if(IOHandler.useTime){
+            craftCount *= rec.craftTime;
+        }
+        return new RecipePlan(rec, (IOHandler.requireRoundCrafts?Math.ceil(craftCount):craftCount));
     }
 
     private RecipePlan(Recipe craft, double count){
@@ -32,7 +36,7 @@ public class RecipePlan {
         this.count = count;
         previousSteps = new RecipePlan[craft.requirements.length];
         for (int i = 0; i<craft.requirements.length; i++) {
-            previousSteps[i] = RecipePlan.createRecipe(craft.requirements[i].craftingItem(),craft.requirements[i].count()*count);
+            previousSteps[i] = RecipePlan.createRecipe(craft.requirements[i].craftingItem(),craft.requirements[i].count()*count/(IOHandler.useTime?craft.craftTime:1));
         }
     }    
     

@@ -25,11 +25,15 @@ public class Recipe {
         }
         for (int i = 0; i < inputs.length; i++) {
             String[] itemParts = inputs[i].split("[ ]");
+            if(itemParts.length == 0){
+                realInput = new ItemCost[0];
+                continue;
+            }
             boolean spaceAtStart = itemParts[0].isBlank();
             double itemreq = Double.valueOf(itemParts[(spaceAtStart?1:0)]);
             String nameOfPart = "";
             for (int j = spaceAtStart?2:1; j < itemParts.length; j++) {
-                nameOfPart+=itemParts[j];
+                nameOfPart+=itemParts[j].trim();
                 if(j<itemParts.length-1){
                     nameOfPart+=" ";
                 }
@@ -64,30 +68,44 @@ public class Recipe {
 
         ItemCost[] realProducts = createItemCosts(reqandprod[0]);
         ItemCost[] realRequirements = new ItemCost[0];
-        if(reqandprod.length != 1){
+        double craftTime = -1.0;
+        if(reqandprod.length == 3){
+            realRequirements = createItemCosts(reqandprod[1]);
+            craftTime = Double.parseDouble(reqandprod[2]);
+        }else if(reqandprod.length == 2){
             realRequirements = createItemCosts(reqandprod[1]);
         }
 
-        return createRecipe(realRequirements, realProducts);
+        return createRecipe(realRequirements, realProducts, craftTime);
     }
 
-    public static Recipe createRecipe(ItemCost[] requirements, ItemCost[] products){
+    public static Recipe createRecipe(ItemCost[] requirements, ItemCost[] products, double craftTime){
         Recipe currentRecipe = doesRecipeExsist(requirements,products);
         if(currentRecipe==null){
-            return new Recipe(requirements, products);
+            return new Recipe(requirements, products, craftTime);
         }
         return currentRecipe;
     }
 
+    //Member \/
+
     public ItemCost[] requirements;
     public ItemCost[] products;
     public boolean endItem;
+    public double craftTime;
 
-    public Recipe(ItemCost[] requirements, ItemCost[] products){
+    public Recipe(ItemCost[] requirements, ItemCost[] products, double craftTime){
         this.requirements = requirements; 
         this.products = products; 
+        this.craftTime = craftTime; 
         this.endItem = requirements.length==0;
         allRecipes.add(this);
+        if(craftTime!=-1.0&&!IOHandler.useTime){
+            IOHandler.addToDebug("Recipie: " + this.toString() + " uses time, did you forget something?");
+        }
+        if(craftTime<=0.0&&IOHandler.useTime){
+            IOHandler.addToDebug("Recipie: " + this.toString() + " has invalid create time, did you forget something?");
+        }
     }
     
     private static String CreateRecipeString(ItemCost[] requirements) {
@@ -130,13 +148,16 @@ public class Recipe {
         if(recString == null){
             return prodString;
         }
-        return prodString + " With: " + recString;
+        if(craftTime == -1.0){
+            return prodString + " With: " + recString;
+        }
+        return prodString + " With: " + recString + " Every " + craftTime + " Seconds";
     }
 
     public static void main(String[] args) {
         System.out.println(Item.createItem("Iron Ingot"));
         System.out.println(Item.createItem("Iron Pressure Plate"));
-        System.out.println(Recipe.createRecipe("2 Iron Pressure Plate | 2 Iron Ingot"));
+        System.out.println(Recipe.createRecipe("2 Iron Pressure Plate | 2 Iron Ingot | 2"));
         System.out.println(Recipe.createRecipe("2 Iron Pressure Plate"));
     }
 }

@@ -5,21 +5,10 @@
 ### create items and recipies in Input.txt in this pattern
 
 Create Item:item name
-
-Create Recipe:# item name 1, # item name 2| # item name 3, # item name 4
-
-or
-
-Create Recipe:# item name
-
-for base items
-
-and then call "Calculate Item:item name #" once  
-
-run IOHandler
-
-look in output.txt
-
+Create Recipe:# item name 1, # item name 2| # item name 3, # item name 4(| craft time) 
+OR 
+Create Recipe:# item name (| | craft time) for base items. 
+Then call "Calculate Item:item name #", run IOHandler/Main, and look in output.txt.
 DebugOutput.txt contains any errors or auto created things
 
 ## other things to put in Input.txt if you want
@@ -51,5 +40,12 @@ Default: 1
 ### AutomaticallyAddRecipes:1 or 0
 
 whether add a free recipe to items with none or not
+
+Default: 0
+
+
+### UseTime:1 or 0
+
+wether or not to use time as an addon to recipies (think gtnh or industrialist machines)
 
 Default: 0

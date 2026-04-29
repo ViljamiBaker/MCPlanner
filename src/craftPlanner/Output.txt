@@ -1,0 +1,42 @@
+------- To make 1.0 of RCBlock -------
+
+Craft 1.0 [10.0 RCBlock] With: [40.0 Steel Rod, 10.0 Wet Concrete] Every 10.0 Seconds With
+    Craft 16.0 [2.0 Steel Rod] With: [2.0 Steel Ingot] Every 8.0 Seconds With
+        Craft 3.333333333333333 [6.0 Steel Ingot] With: [5.0 Coal, 3.2 Iron Mix] Every 5.0 Seconds With
+            13.333333333333332 [3.0 Coal] ------
+            Craft 3.333333333333333 [12.8 Iron Mix] With: [6.64 Coal, 6.4 Iron Powder] Every 20.0 Seconds With
+                4.426666666666666 [3.0 Coal] ------
+                Craft 6.7368421052631575 [1.9 Iron Powder] With: [3.2 Raw Iron] Every 12.0 Seconds With
+                    26.947368421052634 [1.0 Raw Iron] ------
+    Craft 0.5 [20.0 Wet Concrete] With: [10.0 Cement, 20.0 Aggrigate, 60.0 Water] Every 10.0 Seconds With
+        Craft 0.5 [20.0 Cement] With: [20.0 Coal, 30.0 Rawmix] Every 20.0 Seconds With
+            2.0 [3.0 Coal] ------
+            Craft 0.75 [20.0 Aggrigate, 20.0 Rawmix] With: [20.0 Limestone, 20.0 Clay, 20.0 Gravel] Every 20.0 Seconds With
+                0.25 [60.0 Limestone] ------
+                0.25 [60.0 Soil, 60.0 Clay] ------
+                Craft 0.75 [12.0 Gravel] With: [12.0 Soil] Every 12.0 Seconds With
+                    0.25 [60.0 Soil, 60.0 Clay] ------
+        Craft 1.0 [20.0 Aggrigate, 20.0 Rawmix] With: [20.0 Limestone, 20.0 Clay, 20.0 Gravel] Every 20.0 Seconds With
+            0.3333333333333333 [60.0 Limestone] ------
+            0.3333333333333333 [60.0 Soil, 60.0 Clay] ------
+            Craft 1.0 [12.0 Gravel] With: [12.0 Soil] Every 12.0 Seconds With
+                0.3333333333333333 [60.0 Soil, 60.0 Clay] ------
+        0.5 [36.0 Water] ------
+
+Total Items Needed:
+40.0 Coal
+13.279999999999998 Coal
+26.947368421052634 Raw Iron
+6.0 Coal
+15.0 Limestone
+15.0 Soil
+15.0 Clay
+15.0 Soil
+15.0 Clay
+20.0 Limestone
+20.0 Soil
+20.0 Clay
+20.0 Soil
+20.0 Clay
+18.0 Water
+
